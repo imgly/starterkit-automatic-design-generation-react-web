@@ -70,7 +70,7 @@ export function useGenerationWorkflow({
   generateAssets,
   generateSingleAsset,
   removeAsset,
-  finalAssets
+  finalAssets: _finalAssets
 }: UseGenerationWorkflowProps): UseGenerationWorkflowResult {
   // Refs for debounce and initial generation tracking
   const messageDebounceRef = useRef<number | null>(null);
