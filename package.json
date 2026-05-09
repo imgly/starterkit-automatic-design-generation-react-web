@@ -1,15 +1,15 @@
 {
-  "name": "starterkit-automatic-design-generation-react-web",
+  "name": "starterkit-automatic-design-generation",
   "version": "1.0.0",
   "description": "Automatic Design Generation Starterkit - Generate social media assets with CE.SDK and React",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:syntax": "tsc --noEmit"
   },
   "dependencies": {
-    "@cesdk/cesdk-js": "latest",
-    "@cesdk/engine": "latest",
+    "@cesdk/cesdk-js": "^1.75.0-rc.5",
     "classnames": "^2.5.1",
     "react": "^18.3.1",
     "react-colorful": "^5.6.1",
