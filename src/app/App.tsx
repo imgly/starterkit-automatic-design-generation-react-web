@@ -24,7 +24,6 @@ import { StepIndicator } from './StepIndicator/StepIndicator';
 
 import styles from './App.module.css';
 
-
 interface AppProps {
   config: Configuration;
 }
