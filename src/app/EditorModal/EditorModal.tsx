@@ -20,6 +20,7 @@ import {
 
 import styles from './EditorModal.module.css';
 
+
 interface EditorModalProps {
   asset: GeneratedAsset;
   config: Configuration;
