@@ -20,6 +20,7 @@ import {
 
 import styles from './EditorModal.module.css';
 
+
 interface EditorModalProps {
   asset: GeneratedAsset;
   config: Configuration;
@@ -64,6 +65,8 @@ export function EditorModal({
               engine.scene.getCurrentPage() as number,
               {
                 mimeType: 'video/mp4',
+                // 'Auto' derives a bounded bitrate from the resolution/framerate
+                videoBitrate: 'Auto',
                 targetWidth: asset.width,
                 targetHeight: asset.height
               }
@@ -79,7 +82,7 @@ export function EditorModal({
 
       // Load scene and configure
       cesdk.engine.editor.setSetting('page/title/show', false);
-      await cesdk.loadFromString(asset.sceneString);
+      await cesdk.load(asset.sceneString);
 
       // Set the scene name
       const scene = cesdk.engine.scene.get();
