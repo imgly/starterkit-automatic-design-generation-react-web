@@ -1,7 +1,7 @@
 /**
  * Feature Configuration - Enable/Disable Editor Capabilities
  *
- * This file configures which features are available in the design editor.
+ * This file configures which features are available in the video editor.
  * Features control the visibility and availability of UI elements and functionality.
  *
  * ## Feature System Overview
@@ -23,7 +23,7 @@
 import type CreativeEditorSDK from '@cesdk/cesdk-js';
 
 /**
- * Configure which features are enabled in the design editor.
+ * Configure which features are enabled in the video editor.
  *
  * Features are organized by category for easy customization.
  * Uncomment or add features as needed for your use case.
@@ -34,7 +34,7 @@ export function setupFeatures(cesdk: CreativeEditorSDK): void {
   cesdk.feature.enable([
     'ly.img.adjustment' /* Adjustments button */,
 
-    // 'ly.img.animations', /* Animations button (video mode) */
+    'ly.img.animations' /* Animations button */,
 
     'ly.img.blendMode' /* Blend mode controls */,
 
@@ -66,6 +66,9 @@ export function setupFeatures(cesdk: CreativeEditorSDK): void {
 
     'ly.img.dock' /* Dock visibility */,
 
+    // 'ly.img.dragAndDrop', /* Enables all children below */
+    'ly.img.dragAndDrop.asset' /* Drag assets from the library onto blocks/pages */,
+
     'ly.img.duplicate' /* Duplicate button and copy/paste */,
 
     'ly.img.effect' /* Effect button */,
@@ -77,7 +80,7 @@ export function setupFeatures(cesdk: CreativeEditorSDK): void {
     'ly.img.fill.color.picker.gradient' /* Gradient mode selector and stops editor */,
     'ly.img.fill.color.picker.opacity' /* Alpha/opacity slider */,
     'ly.img.fill.image' /* Image fill controls and crop */,
-    // 'ly.img.fill.video', /* Video fill, trim, volume, speed */
+    'ly.img.fill.video' /* Video fill, trim, volume, speed */,
 
     'ly.img.filter' /* Filter button */,
 
@@ -87,11 +90,24 @@ export function setupFeatures(cesdk: CreativeEditorSDK): void {
     'ly.img.group.select' /* Select parent group */,
     'ly.img.group.ungroup' /* Dissolve group */,
 
-    // 'ly.img.inspector', /* Inspector visibility */
+    // 'ly.img.inspector', /* Enables all children below */
     'ly.img.inspector.bar' /* Inspector Bar visibility */,
     'ly.img.inspector.toggle' /* Inspector Toggle button */,
 
     'ly.img.keyboard.shortcuts' /* Enable keyboard shortcuts */,
+
+    // 'ly.img.layerList', /* Enables all children below */
+    'ly.img.layerList.canvasFollow' /* Picking a row scrolls the canvas to it */,
+    // 'ly.img.layerList.combined', /* One tree of every page and its layers */
+    'ly.img.layerList.layers' /* Layers section */,
+    'ly.img.layerList.lock' /* Lock toggle on a row */,
+    'ly.img.layerList.menu' /* Ellipsis menu on a row */,
+    'ly.img.layerList.pages' /* Pages section */,
+    'ly.img.layerList.panel' /* Layer & Page List panel and its dock button */,
+    'ly.img.layerList.rename' /* Inline rename on a row */,
+    'ly.img.layerList.reorder' /* Drag a row to reorder */,
+    // 'ly.img.layerList.thumbnails', /* Thumbnail on every row */
+    'ly.img.layerList.visibility' /* Hide/show toggle on a layer row */,
 
     'ly.img.library.panel' /* Asset Library panel */,
 
@@ -111,10 +127,16 @@ export function setupFeatures(cesdk: CreativeEditorSDK): void {
     'ly.img.opacity' /* Opacity controls */,
 
     // 'ly.img.page', /* Enables all page children below */
-    'ly.img.page.add' /* Add Page button in Canvas Bar */,
-    'ly.img.page.bleedMargin' /* Bleed margin controls */,
+    // 'ly.img.page.add', /* Add Page button in Canvas Bar */
+    // 'ly.img.page.bleedMargin', /* Bleed margin controls */
+    // 'ly.img.page.bleedColor', /* Bleed band color */
     'ly.img.page.clipContent' /* Clip content on/off toggle */,
-    'ly.img.page.move' /* Move Up/Down/Left/Right buttons */,
+    // 'ly.img.page.printMarks.exclusionArea', /* Exclusion area controls */
+    // 'ly.img.page.printMarks.safetyMargin', /* Safety margin controls */
+    // 'ly.img.page.move', /* Move Up/Down/Left/Right buttons */
+    // 'ly.img.page.printMarks', /* Enables all children below */
+    // 'ly.img.page.printMarks.crop', /* Crop marks */
+    // 'ly.img.page.printMarks.registration', /* Registration marks */
     'ly.img.page.resize' /* Resize button and page formats */,
     'ly.img.page.settings' /* Read-only page dimensions, unit, and resolution */,
 
@@ -152,7 +174,7 @@ export function setupFeatures(cesdk: CreativeEditorSDK): void {
     // 'ly.img.placeholder.text.character', /* Character option */
     // 'ly.img.placeholder.text.edit', /* Edit Text option */
 
-    // 'ly.img.playbackSpeed', /* Playback speed control */
+    'ly.img.playbackSpeed' /* Playback speed control */,
 
     // 'ly.img.position', /* Position dropdown */
     'ly.img.position.align' /* Align left/right/center/top/bottom */,
@@ -170,10 +192,10 @@ export function setupFeatures(cesdk: CreativeEditorSDK): void {
 
     // 'ly.img.scene.fontSizeUnit', /* Font size unit selector in page resize panel */
     // 'ly.img.scene.layout', /* Enables all children below */
-    'ly.img.scene.layout.free' /* Free layout toggle */,
-    'ly.img.scene.layout.horizontal' /* Horizontal layout toggle */,
-    'ly.img.scene.layout.spacing' /* Gap + screen-space toggle for stacked layouts */,
-    'ly.img.scene.layout.vertical' /* Vertical layout toggle */,
+    // 'ly.img.scene.layout.free', /* Free layout toggle */
+    // 'ly.img.scene.layout.horizontal', /* Horizontal layout toggle */
+    // 'ly.img.scene.layout.spacing', /* Gap + screen-space toggle for stacked layouts */
+    // 'ly.img.scene.layout.vertical', /* Vertical layout toggle */
 
     // 'ly.img.settings', /* Quick settings menu for development */
 
@@ -234,9 +256,9 @@ export function setupFeatures(cesdk: CreativeEditorSDK): void {
     'ly.img.transform.rotation' /* Rotation controls */,
     'ly.img.transform.size' /* Width and height controls */,
 
-    // 'ly.img.transitions', /* Transitions button (video mode) */
+    'ly.img.transitions' /* Transitions button */,
 
-    'ly.img.trim' /* Trim button (video mode) */
+    'ly.img.trim' /* Trim button (video/audio mode) */,
 
     // 'ly.img.vectorEdit', /* Vector edit controls (parent) */
     // 'ly.img.vectorEdit.addMode', /* Add node mode toggle */
@@ -247,23 +269,23 @@ export function setupFeatures(cesdk: CreativeEditorSDK): void {
     // 'ly.img.vectorEdit.moveMode', /* Move/select mode toggle */
 
     // 'ly.img.video', /* Enables all children below */
-    // 'ly.img.video.caption', /* Video captions */
+    'ly.img.video.caption' /* Video captions */,
     // 'ly.img.video.timeline', /* Video Timeline visibility */
-    // 'ly.img.video.timeline.addClip', /* Add clips to timeline */
-    // 'ly.img.video.timeline.audio', /* Audio track in timeline */
-    // 'ly.img.video.timeline.clip.menu', /* Clip ellipsis button */
-    // 'ly.img.video.timeline.clips', /* Clips track in timeline */
+    'ly.img.video.timeline.addClip' /* Add clips to timeline */,
+    'ly.img.video.timeline.audio' /* Audio track in timeline */,
+    'ly.img.video.timeline.clip.menu' /* Clip ellipsis button */,
+    'ly.img.video.timeline.clips' /* Clips track in timeline */,
     // 'ly.img.video.timeline.controls', /* Base video control UI */
-    // 'ly.img.video.timeline.controls.background', /* Background color controls */
-    // 'ly.img.video.timeline.controls.bar', /* Timeline controls bar area */
-    // 'ly.img.video.timeline.controls.loop', /* Loop toggle */
-    // 'ly.img.video.timeline.controls.playback', /* Play/pause and timestamp */
-    // 'ly.img.video.timeline.controls.split', /* Split clip control */
-    // 'ly.img.video.timeline.controls.timelineZoom', /* Timeline zoom controls */
-    // 'ly.img.video.timeline.controls.toggle', /* Timeline collapse/expand toggle */
-    // 'ly.img.video.timeline.overlays', /* Overlays track in timeline */
-    // 'ly.img.video.timeline.ruler', /* Timeline ruler/time scale */
+    'ly.img.video.timeline.controls.background' /* Background color controls */,
+    'ly.img.video.timeline.controls.bar' /* Timeline controls bar area */,
+    'ly.img.video.timeline.controls.loop' /* Loop toggle */,
+    'ly.img.video.timeline.controls.playback' /* Play/pause and timestamp */,
+    'ly.img.video.timeline.controls.split' /* Split clip control */,
+    'ly.img.video.timeline.controls.timelineZoom' /* Timeline zoom controls */,
+    'ly.img.video.timeline.controls.toggle' /* Timeline collapse/expand toggle */,
+    'ly.img.video.timeline.overlays' /* Overlays track in timeline */,
+    'ly.img.video.timeline.ruler' /* Timeline ruler/time scale */,
 
-    // 'ly.img.volume' /* Volume control (video mode) */
+    'ly.img.volume' /* Volume control */
   ]);
 }
