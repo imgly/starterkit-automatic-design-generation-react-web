@@ -1,16 +1,16 @@
 /**
- * Design Editor Plugin - Complete Design Editing Configuration for CE.SDK
+ * Video Editor Plugin - Complete Video Editing Configuration for CE.SDK
  *
- * This plugin provides a production-ready design editor configuration with
- * templates, elements, asset libraries, and comprehensive editing capabilities.
+ * This plugin provides a production-ready video editor configuration with
+ * timeline, clips, overlays, audio tracks, animations, and comprehensive editing capabilities.
  *
  * @example Basic usage
  * ```typescript
  * import CreativeEditorSDK from '@cesdk/cesdk-js';
- * import { DesignEditorConfig } from './plugin';
+ * import { VideoEditorConfig } from './plugin';
  *
  * const cesdk = await CreativeEditorSDK.create('#editor', config);
- * await cesdk.addPlugin(new DesignEditorConfig());
+ * await cesdk.addPlugin(new VideoEditorConfig());
  * await cesdk.actions.run('scene.create');
  * ```
  *
@@ -29,19 +29,19 @@ import { setupSettings } from './settings';
 import { setupUI } from './ui';
 
 /**
- * Design Editor configuration plugin.
+ * Video Editor configuration plugin.
  *
- * Provides a complete design editing experience optimized for creating
- * graphics, templates, marketing materials, and multi-page documents.
+ * Provides a complete video editing experience optimized for creating
+ * video content, animations, social media clips, and multimedia presentations.
  *
  * @public
  */
-export class DesignEditorConfig implements EditorPlugin {
+export class VideoEditorConfig implements EditorPlugin {
   /**
    * Unique identifier for this plugin.
    * Used to identify the plugin in the CE.SDK plugin registry.
    */
-  name = 'cesdk-design-editor';
+  name = 'cesdk-video-editor';
 
   /**
    * Plugin version - matches the CE.SDK version for compatibility.
@@ -49,7 +49,7 @@ export class DesignEditorConfig implements EditorPlugin {
   version = CreativeEditorSDK.version;
 
   /**
-   * Initialize the design editor configuration.
+   * Initialize the video editor configuration.
    *
    * This method is called when the plugin is added to CE.SDK via addPlugin().
    * It sets up all features, UI components, translations, and settings.
@@ -60,7 +60,7 @@ export class DesignEditorConfig implements EditorPlugin {
     if (cesdk) {
       // #region Editor Reset
       // Reset editor to clear any previous configuration
-      // This ensures a clean slate when applying the design editor config
+      // This ensures a clean slate when applying the video editor config
       cesdk.resetEditor();
       // #endregion
 
@@ -68,7 +68,7 @@ export class DesignEditorConfig implements EditorPlugin {
       // The CE.SDK generation the calls below were written for. Pinned to a
       // literal at publish time, so upgrading CE.SDK in a copy of this kit
       // keeps the editor behaving as it did when the kit was taken.
-      cesdk.setEditorCompatibilityVersion('1.82.2');
+      cesdk.setEditorCompatibilityVersion('1.83.0-rc.3');
       // #endregion
 
       // #region Feature Configuration
@@ -102,15 +102,24 @@ export class DesignEditorConfig implements EditorPlugin {
       // #endregion
 
       // #region Engine Settings
-      // Configure engine settings (interactions, colors, snapping, etc.)
+      // Configure engine settings (interactions, colors, snapping, captions, etc.)
       // See settings.ts for all available settings
       setupSettings(engine);
+      // #endregion
+
+      // #region Browser Capability Checks
+      // Run browser support checks with video editor defaults.
+      await cesdk.actions.run('editor.checkBrowserSupport', {
+        videoDecode: 'block',
+        videoEncode: 'warn'
+      });
       // #endregion
 
       // Re-applies deprecated configuration options (e.g. callbacks,
       // ui.elements.*, locale, i18n) that were cleared by resetEditor() above.
       // If you have already migrated to the respective API calls, you can
       // safely remove this line.
+      // eslint-disable-next-line -- Intentional backward-compat shim for pre-migration user configurations. Remove once all deprecated configuration paths are dropped.
       cesdk.reapplyLegacyUserConfiguration();
     }
   }
