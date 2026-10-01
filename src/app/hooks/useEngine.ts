@@ -38,8 +38,6 @@ export function useEngine(config: Configuration): UseEngineReturn {
       }
 
       engineRef.current = engine;
-      // Debug access (remove in production)
-      (window as any).engine = engine;
 
       setIsReady(true);
     };
