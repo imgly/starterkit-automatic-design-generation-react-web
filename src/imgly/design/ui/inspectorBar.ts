@@ -9,7 +9,7 @@
  * - `'Transform'`: Default mode - shows full editing controls
  * - `'Text'`: Text editing - shows text formatting controls
  * - `'Crop'`: Crop mode - shows crop controls
- * - `'Trim'`: Trim mode - shows trim controls for video/audio clips
+ * - `'Trim'`: Trim mode - shows trim controls for video/audio
  *
  * ## Available Components
  *
@@ -57,8 +57,10 @@
  * - `'ly.img.cutout.offset.inspectorBar'` - Cutout offset
  * - `'ly.img.cutout.smoothing.inspectorBar'` - Cutout smoothing
  *
+ * **Page:**
+ * - `'ly.img.pageResize.inspectorBar'` - Page resize button
+ *
  * **Special Controls:**
- * - `'ly.img.placeholder.inspectorBar'` - Open placeholder settings
  * - `'ly.img.inspectorToggle.inspectorBar'` - Toggle inspector panel
  * - `'ly.img.trimControls.inspectorBar'` - Trim mode controls
  * - `'ly.img.cropControls.inspectorBar'` - Crop mode controls
@@ -88,12 +90,6 @@ export function setupInspectorBar(cesdk: CreativeEditorSDK): void {
     { in: 'ly.img.inspector.bar', when: { editMode: 'Transform' } },
     [
       'ly.img.spacer',
-
-      // ============================
-      // Placeholder
-      // ============================
-      // 'ly.img.placeholder.inspectorBar',
-      // 'ly.img.separator',
 
       // ============================
       // Page Resize
@@ -140,7 +136,6 @@ export function setupInspectorBar(cesdk: CreativeEditorSDK): void {
       'ly.img.fill.inspectorBar',
       'ly.img.trim.inspectorBar',
       'ly.img.volume.inspectorBar',
-      'ly.img.playbackSpeed.inspectorBar',
       'ly.img.crop.inspectorBar',
       'ly.img.separator',
       'ly.img.stroke.inspectorBar',
@@ -153,9 +148,8 @@ export function setupInspectorBar(cesdk: CreativeEditorSDK): void {
       // ============================
       // Animations
       // ============================
-      'ly.img.animations.inspectorBar',
-      'ly.img.transitions.inspectorBar',
-      'ly.img.separator',
+      // 'ly.img.animations.inspectorBar',
+      // 'ly.img.separator',
 
       // ============================
       // Effects
@@ -166,11 +160,11 @@ export function setupInspectorBar(cesdk: CreativeEditorSDK): void {
           'ly.img.adjustment.inspectorBar',
           'ly.img.filter.inspectorBar',
           'ly.img.effect.inspectorBar',
-          'ly.img.blur.inspectorBar',
-          'ly.img.separator',
-          'ly.img.shadow.inspectorBar'
+          'ly.img.blur.inspectorBar'
         ]
       },
+      'ly.img.separator',
+      'ly.img.shadow.inspectorBar',
       'ly.img.separator',
 
       // ============================
@@ -200,7 +194,7 @@ export function setupInspectorBar(cesdk: CreativeEditorSDK): void {
 
   // ============================================================================
   // INSPECTOR BAR - CROP MODE
-  // Controls for cropping images and videos
+  // Controls for cropping images
   // ============================================================================
 
   // #region Inspector Bar - Crop Mode
