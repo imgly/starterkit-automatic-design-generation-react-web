@@ -184,8 +184,12 @@ function createFillCallback(
     if (textBlock) {
       const rgb =
         theme === 'dark' ? { r: 1, g: 1, b: 1 } : { r: 0, g: 0, b: 0 };
-      engine.block.setTextColor(textBlock, { ...rgb, a: 0.75 }, 0, 1);
-      engine.block.setTextColor(textBlock, { ...rgb, a: 1.0 }, 1);
+      // The first line holds the message, the rest the podcast name.
+      const messageEnd = engine.block
+        .getString(textBlock, 'text/text')
+        .indexOf('\n');
+      engine.block.setTextColor(textBlock, { ...rgb, a: 0.75 }, 0, messageEnd);
+      engine.block.setTextColor(textBlock, { ...rgb, a: 1.0 }, messageEnd);
     }
   };
 }
