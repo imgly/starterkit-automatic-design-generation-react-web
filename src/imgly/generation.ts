@@ -76,7 +76,7 @@ export async function generateAsset(
   await engine.scene.load(templateUrl);
 
   // Get page
-  const [page] = engine.block.findByKind('page');
+  const page = engine.block.findByKind('page')[0]!;
 
   // Optionally zoom to page
   if (zoomToPage) {
